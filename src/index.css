@@ -13,7 +13,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+body{
+  background-color: lavenderblush;
+}
 a {
   font-weight: 500;
   color: #646cff;
