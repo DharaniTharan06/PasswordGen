@@ -22,7 +22,7 @@ function App() {
 
   useEffect(()=>{
     passgen();
-  },[length,usenum,usechar,setPass]);
+  },[length,usenum,usechar,passgen]);
 
   return (
     <div className='w-full max-w-120 mx-auto shadow-md rounded-lg px-4 py-3 my-8' style={{backgroundColor:"grey"}}>
