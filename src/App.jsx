@@ -1,4 +1,4 @@
-import { useState,useCallback,useEffect } from 'react'
+import { useState ,useCallback ,useEffect ,useRef } from 'react'
 import "./App.css"
 function App() {
 
@@ -6,6 +6,13 @@ function App() {
   const [usenum,setUsenum] = useState(false);
   const [usechar,setUsechar] = useState(false);
   const [pass,setPass] = useState("");
+
+  const passref = useRef(null);
+
+  const copyClipboard = useCallback(()=>{
+    passref.current?.select()
+    window.navigator.clipboard.writeText(pass)
+  },[pass]);
 
   const passgen = useCallback(()=>{
     let pass = "";
@@ -27,8 +34,8 @@ function App() {
   return (
     <div className='w-full max-w-120 mx-auto shadow-md rounded-lg px-4 py-3 my-8' style={{backgroundColor:"grey"}}>
       <div className='flex shadow rounded-lg overflow-hidden mb-4'>
-        <input type='text' value={pass} className='outline-none w-full px-3 py-1 bg-white' placeholder='Password' readOnly></input>
-        <button className='outline-none px-3 py-0.5 shrink-0' style={{backgroundColor: "lightskyblue"}}>Copy</button>
+        <input type='text' value={pass} className='outline-none w-full px-3 py-1 bg-white' placeholder='Password' readOnly ref={passref}></input>
+        <button onClick={copyClipboard} className='outline-none px-3 py-0.5 shrink-0' style={{backgroundColor: "lightskyblue"}}>Copy</button>
       </div>
       <div className='flex gap-x-2'>
         <div className='flex items-center gap-x-1'>
